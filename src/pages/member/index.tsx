@@ -3,7 +3,7 @@ import StudentCouncilCard from '../../components/common/StudentCouncilCard'
 import Loader from '../../components/common/Loader'
 import { client, urlFor } from '../../lib/sanity'
 
-const ITEMS_TO_SHOW = 7;
+const ITEMS_TO_SHOW = 8;
 
 export default function Member({ isMobile }) {
   const [data, setData] = useState([]);
@@ -51,7 +51,7 @@ export default function Member({ isMobile }) {
         <Loader />
       ) : (
         <>
-          <div className="flex flex-col md:flex-row flex-wrap grid sm:grid-cols-4 md:grid-cols-7 gap-10 md:gap-16 xl:gap-5 justify-center items-center">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 gap-10 md:gap-8 xl:gap-x-20 justify-center items-center">
             {data.slice(0, visibleCount).map((item) => (
               <StudentCouncilCard
                 key={item._id}

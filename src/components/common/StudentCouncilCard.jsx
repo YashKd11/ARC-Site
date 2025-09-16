@@ -16,7 +16,7 @@ export default function StudentCouncilCard({
       transition={{ duration: 1.3 }}
       viewport={{ once: false }}
       className={cn(
-        'relative p-4 border-0 bg-[#EEEBE8] flex flex-col overflow-hidden justify-between items-center',
+        'relative p-2 border-0 bg-[#EEEBE8] flex flex-col overflow-hidden justify-between items-center',
         {
           'w-[200px] h-[310px]': size === 'large',
           'w-[180px] h-[250px]': size === 'medium',

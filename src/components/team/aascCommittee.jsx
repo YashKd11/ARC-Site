@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { client, urlFor } from '../../lib/sanity'
+import Loader from '../common/Loader'
 
 export default function AlumniCommittee({ isMobile }) {
   const [data, setData] = useState([])
@@ -19,7 +20,6 @@ export default function AlumniCommittee({ isMobile }) {
         `
 
         const fetchedData = await client.fetch(query)
-        console.log('Fetched Faculty Data:', fetchedData) // Debugging log
         setData(fetchedData)
       } catch (error) {
         console.error('Error fetching faculty data:', error)
@@ -39,13 +39,12 @@ export default function AlumniCommittee({ isMobile }) {
         <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold uppercase underline'>
           Alumni Assocation
         </h2>
-        {/* <div className='h-1 w-[70%] lg:w-[52%] bg-[#853333]'></div> */}
       </div>
 
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader/>
       ) : (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 xl:gap-8 place-items-center'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-12 xl:gap-8 place-items-center'>
           {data.length > 0 ? (
             data.map((item) => (
               <div
@@ -65,9 +64,6 @@ export default function AlumniCommittee({ isMobile }) {
                   <p className='uppercase text-lg font-semibold text-gray-700'>
                     {item.Designation}
                   </p>
-                  {/* <p className='text-sm text-gray-600 px-4'>
-                    {item.Description}
-                  </p> */}
                 </div>
               </div>
             ))
