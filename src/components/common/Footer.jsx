@@ -102,7 +102,7 @@ export default function Footer() {
           </a>
         </div>
         <div className='text-center'>
-          © Created by Tech-Team of Alumni Relations Cell
+          © Created and maintained by Tech-Team of Alumni Relations Cell
         </div>
       </div>
     </motion.div>

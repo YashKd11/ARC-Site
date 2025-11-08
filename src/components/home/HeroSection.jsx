@@ -23,7 +23,7 @@ export default function HeroSection() {
       <motion.div
         className='fixed inset-0 bg-black'
         initial={{ opacity: 1 }}
-        animate={{ opacity: 0.7 }}
+        animate={{ opacity: 0.5 }}
         transition={{ duration: 2, ease: 'easeOut' }}
       />
 

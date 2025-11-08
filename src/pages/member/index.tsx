@@ -3,13 +3,13 @@ import StudentCouncilCard from '../../components/common/StudentCouncilCard'
 import Loader from '../../components/common/Loader'
 import { client, urlFor } from '../../lib/sanity'
 
-const ITEMS_TO_SHOW = 8;
+const ITEMS_TO_SHOW = 8
 
 export default function Member({ isMobile }) {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [visibleCount, setVisibleCount] = useState(ITEMS_TO_SHOW);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [visibleCount, setVisibleCount] = useState(ITEMS_TO_SHOW)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -22,28 +22,28 @@ export default function Member({ isMobile }) {
           Pos,
           linkedin
         }
-        `;
+        `
 
-        const fetchedData = await client.fetch(query);
-        setData(fetchedData);
-        setIsLoading(false);
+        const fetchedData = await client.fetch(query)
+        setData(fetchedData)
+        setIsLoading(false)
       } catch (error) {
-        console.error('Error fetching data:', error);
-        setIsLoading(false);
+        console.error('Error fetching data:', error)
+        setIsLoading(false)
       }
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   const handleToggle = () => {
     if (isExpanded) {
-      setVisibleCount(ITEMS_TO_SHOW); // Show only initial 6 items
+      setVisibleCount(ITEMS_TO_SHOW) // Show only initial 6 items
     } else {
-      setVisibleCount((prevCount) => Math.min(prevCount + 6, data.length)); // Load more in increments of 6
+      setVisibleCount((prevCount) => Math.min(prevCount + 6, data.length)) // Load more in increments of 6
     }
-    setIsExpanded(!isExpanded);
-  };
+    setIsExpanded(!isExpanded)
+  }
 
   return (
     <div>
@@ -51,7 +51,7 @@ export default function Member({ isMobile }) {
         <Loader />
       ) : (
         <>
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 gap-10 md:gap-8 xl:gap-x-20 justify-center items-center">
+          <div className='grid sm:grid-cols-1 md:grid-cols-3 md:grid-rows-3 lg:grid-cols-4 lg:grid-rows-2 gap-10 md:gap-8 xl:gap-x-20 justify-center items-center'>
             {data.slice(0, visibleCount).map((item) => (
               <StudentCouncilCard
                 key={item._id}
@@ -60,18 +60,20 @@ export default function Member({ isMobile }) {
                 name={item.name}
                 linkedin={item.linkedin}
                 position={item.Pos}
-                size="large"
+                size='large'
               />
             ))}
           </div>
 
           {/* Always show Load More / Load Less button when there are more items */}
           {data.length > ITEMS_TO_SHOW && (
-            <div className="mt-6 flex justify-center">
+            <div className='mt-6 flex justify-center'>
               <button
                 onClick={handleToggle}
                 className={`px-6 py-2 text-white rounded-lg transition ${
-                  isExpanded ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'
+                  isExpanded
+                    ? 'bg-red-600 hover:bg-red-700'
+                    : 'bg-blue-600 hover:bg-blue-700'
                 }`}
               >
                 {isExpanded ? 'Load Less' : 'Load More'}
@@ -81,5 +83,5 @@ export default function Member({ isMobile }) {
         </>
       )}
     </div>
-  );
+  )
 }
