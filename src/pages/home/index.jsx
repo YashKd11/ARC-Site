@@ -9,8 +9,8 @@ export default function HomePage({ isMobile }) {
     <div className='relative text-white'>
       <HeroSection />
       <GrandAlumniMeetBanner />
-      <AlumniBrief />
       <AboutBrief />
+      <AlumniBrief />
       <EventsBrief isMobile={isMobile} />
     </div>
   )
