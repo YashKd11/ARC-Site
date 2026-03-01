@@ -21,6 +21,18 @@ const EventsPage = () => {
           }`
 
         const fetchedData = await client.fetch(query)
+
+        // Ensure "Grand Alumni Meet 2026" is always at the top
+        const specificEventTitle = 'Grand Alumni Meet 2026'
+        const featuredEventIndex = fetchedData.findIndex(
+          (event: any) => event.title === specificEventTitle
+        )
+
+        if (featuredEventIndex !== -1) {
+          const [featuredEvent] = fetchedData.splice(featuredEventIndex, 1)
+          fetchedData.unshift(featuredEvent)
+        }
+
         setData(fetchedData)
         setIsLoading(false)
       } catch (error) {

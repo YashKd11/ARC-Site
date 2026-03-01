@@ -107,20 +107,18 @@ export default function EventDetails() {
     <p className="font-bold">
       Venue: <span className="font-medium">{eventData.venue}</span>
     </p>
-    {/* <div className='font-bold'>
-              View Pictures:{' '}
-              <a
-                href={eventData.Link}
-                className='hover:underline text-blue-600 font-medium'
-              >
-                Click to view photos
-              </a>
-            </div> */}
-    {/* <p className="font-bold">
-      View Pictures:{' '} <a className="hover:underline text-blue-600 font-medium" href={
-        eventData.Link
-      }>Click to view photos</a>
-    </p> */}
+    {eventData?.PDF?.asset?.url && (
+      <div className="mt-4">
+        <a
+          href={eventData.PDF.asset.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#853333] text-white px-6 py-2 rounded-full font-medium hover:bg-[#6b2828] transition-colors text-base md:text-lg shadow-md"
+        >
+          View PDF
+        </a>
+      </div>
+    )}
   </div>
 </div>
 
